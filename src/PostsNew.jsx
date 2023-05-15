@@ -5,17 +5,14 @@ export function PostsNew() {
       <form>
         <div className="form-floating mb-3">
           <input type="text" className="form-control" id="floatingTitle" placeholder="Title" />
-          <label htmlFor="floatingInput">Title</label>
         </div>
 
         <div className="form-floating mb-3">
           <input type="text" className="form-control form-control-large" id="floatingBody" placeholder="Body" />
-          <label htmlFor="floatingInput">Body</label>
         </div>
 
         <div className="form-floating mb-3">
-          <input type="text" className="form-control" id="floatingImage" placeholder="Image" />
-          <label htmlFor="floatingInput">Image URL</label>
+          <input type="text" className="form-control" id="floatingImage" placeholder="ImageURL" />
         </div>
 
         <br></br>
