@@ -1,5 +1,7 @@
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
+import { PostsShow } from "./PostsShow";
+import { Modal } from "./Modal";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -7,6 +9,8 @@ import { useState, useEffect } from "react";
   export function Content() {
     
     const [posts, setPosts] = useState([]);
+    const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+    const [currentPost, setCurrentPost] = useState({});
 
     const handleIndexPosts = () => {
       console.log("handleIndexPosts");
@@ -15,23 +19,26 @@ import { useState, useEffect } from "react";
         setPosts(response.data);
         
       });
-    }
+    };
 
     useEffect(handleIndexPosts, []);
 
     const handleShowPost = (myPost) => {
       setIsPostsShowVisible(true);
-      setCurrentPost(myPost)
+      setCurrentPost(myPost);
+    };
+
+    const handleClose = () => {
+      setIsPostsShowVisible(false);
     };
 
     return (
       <div className="container">
         <PostsNew />
         <PostsIndex posts={posts} onShowPost={handleShowPost} />
-        
-        <h4>
-          <PostsIndex posts={posts} />
-        </h4>
+        <Modal show={isPostsShowVisible} onClose={handleClose}>
+          <PostsShow post={currentPost} />
+        </Modal>
       </div>
     );
   }
